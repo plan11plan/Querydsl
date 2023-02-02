@@ -17,9 +17,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-import study.querydsl.dto.MemberDto;
-import study.querydsl.dto.QMemberDto;
-import study.querydsl.dto.UserDto;
+import study.querydsl.dto.*;
 import study.querydsl.entity.Member;
 import study.querydsl.entity.QMember;
 import study.querydsl.entity.Team;
@@ -29,8 +27,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 import java.util.List;
 
+import static com.jayway.jsonpath.internal.Utils.isEmpty;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.InstanceOfAssertFactories.iterable;
+import static org.springframework.util.StringUtils.hasText;
 import static study.querydsl.entity.QMember.member;
 import static study.querydsl.entity.QTeam.team;
 
@@ -828,6 +827,7 @@ public class QuerydslBasicTest {
         }
 
     }
+
     @Test
     @DisplayName("sql function-소문자로 바꿔보기")
     public void sqlFunction2() {
@@ -839,9 +839,12 @@ public class QuerydslBasicTest {
                 .where(member.username.eq(member.username.lower()))
                 .fetch();
         for (String s : result) {
-            System.out.println("결과 = "+s);
-            
+            System.out.println("결과 = " + s);
+
         }
     }
+
+
+
 
 }
