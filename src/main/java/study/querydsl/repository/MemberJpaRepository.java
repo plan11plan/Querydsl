@@ -18,6 +18,10 @@ import java.util.Optional;
 import static org.springframework.util.StringUtils.hasText;
 import static study.querydsl.entity.QMember.member;
 import static study.querydsl.entity.QTeam.team;
+
+/**
+ * 순수 JPA Repository
+ */
 @Repository
 @RequiredArgsConstructor
 public class MemberJpaRepository {
